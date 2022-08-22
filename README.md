@@ -102,6 +102,7 @@ python -m venv .venv
 pip install -r requirements.txt -r requirements-test.txt
 ```
 ### Run tests
+The tests use a real instance of MySQL. Change the environment variables in ```tests/conftest.py``` accordingly
 ```
 pytest -p no:cacheprovider tests/
 ```
@@ -128,7 +129,7 @@ This service is made to be deployed on AWS. It uses Github Actions to automatica
 * Fork this repository
 * Setup a Terraform Workspace. To create one, follow these steps: https://learn.hashicorp.com/tutorials/terraform/github-actions. You can stop at step 3 (Set up a GitHub repository). 
 * Change the ```workspaces``` and ```organization``` in ```terraform/provider.tf``` with values from the previous step.
-* Add the following secrets:
+* Add the following Github secrets:
     * ```AWS_REGION```
     * ```AWS_ACCESS_KEY_ID```
     * ```AWS_SECRET_ACCESS_KEY```
