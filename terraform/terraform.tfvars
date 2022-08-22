@@ -1,8 +1,8 @@
-api_repo = "714508401366.dkr.ecr.eu-west-2.amazonaws.com/api"
-compute_repo = "714508401366.dkr.ecr.eu-west-2.amazonaws.com/compute"
+api_repo = "<api repo>"
+compute_repo = "<compute repo>"
 database_name = "url_db"
 database_user = "terraform"
-execution_rate = "rate(1 minute)"
+execution_rate = "rate(10 minutes)"
 cidr = "10.32.0.0/16"
 min_pool = 5
 max_pool = 100

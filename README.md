@@ -126,7 +126,12 @@ This service is made to be deployed on AWS. It uses Github Actions to automatica
 * Fork this repository
 * Setup a Terraform Workspace. To create one, follow these steps: https://learn.hashicorp.com/tutorials/terraform/github-actions. You can stop at step 3 (Set up a GitHub repository). 
 * Change the ```workspaces``` and ```organization``` in ```terraform/provider.tf``` with values from the previous step.
-* Add ```AWS_REGION``` to the list of secrets for the repository
+* Add the following secrets:
+    * ```AWS_REGION```
+    * ```AWS_ACCESS_KEY_ID```
+    * ```AWS_SECRET_ACCESS_KEY```
+    * ```DB_PASSWORD```
+    * ```TF_API_TOKEN```
 * Change the variables in ```terraform/terraform.tfvars``` to suitable values
 * Push to ```main``` to trigger the Github Workflow
 
