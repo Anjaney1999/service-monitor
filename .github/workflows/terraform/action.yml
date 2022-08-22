@@ -1,0 +1,21 @@
+name: Deploy
+description: Deploy to AWS
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        cli_config_credentials_token: ${{ env.TF_API_TOKEN }}
+    - name: Terraform Init
+      shell: bash
+      working-directory: ./terraform
+      run: terraform init
+    - name: Terraform Plan
+      shell: bash
+      working-directory: ./terraform
+      run: terraform plan -var-file="./terraform.tfvars" -var="database_password=${{ env.DB_PASSWORD }}"
+    - name: Terraform Apply
+      shell: bash
+      working-directory: ./terraform
+      run: terraform apply -auto-approve -var-file="./terraform.tfvars" -var="database_password=${{ env.DB_PASSWORD }}"

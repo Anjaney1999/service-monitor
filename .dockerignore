@@ -1,0 +1,8 @@
+.venv/
+.vscode/
+.terraform*
+*.tfstate
+*.tfstate.*
+*egg-info
+__pycache__
+.pytest_cache

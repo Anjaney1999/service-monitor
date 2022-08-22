@@ -1,0 +1,11 @@
+fastapi[full]
+uvicorn
+pandas
+databases
+mysql-connector-python
+httpx
+redis
+aiomysql
+apscheduler
+pydantic-sqlalchemy
+schedule

@@ -1,0 +1,37 @@
+name: Provision Infrastructure
+
+on:
+  push:
+    branches: [ main ]
+env:
+  TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
+jobs:
+  run-workflow:
+    name: Run Workflow
+    runs-on: ubuntu-latest
+    services:
+        mysql:
+            image: mysql:5.7
+            env:
+                MYSQL_ROOT_PASSWORD: password
+                MYSQL_DATABASE: testdatabase
+            ports:
+              - 3306:3306
+            options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run tests
+        uses: ./.github/workflows/test
+      - name: Push images to ECR 
+        uses: ./.github/workflows/docker
+      # - name: Deploy to AWS
+      #   uses: ./.github/workflows/terraform
+
+
+      

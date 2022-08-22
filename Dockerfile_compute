@@ -1,0 +1,18 @@
+FROM python:3.9
+WORKDIR /code
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+ADD src/service_monitor/compute /code/service_monitor/compute
+ADD src/service_monitor/shared /code/service_monitor/shared
+ADD data /code/data
+
+CMD ["python", "-m", "service_monitor.compute.scheduler", "--run-local"]

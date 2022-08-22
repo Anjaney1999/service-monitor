@@ -1,0 +1,14 @@
+name: CITest
+description: "Tests"
+
+runs:
+  using: "composite"
+  steps:
+    - name: install requirements
+      run: |
+        pip install -r requirements.txt -r requirements-test.txt
+      shell: bash
+    - name: run tests
+      run: |
+        pytest -p no:cacheprovider tests/
+      shell: bash

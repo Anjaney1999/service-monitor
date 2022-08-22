@@ -1,0 +1,6 @@
+pytest
+freezegun
+fakeredis
+pytest-httpx
+pytest-asyncio
+-e .

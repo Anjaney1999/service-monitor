@@ -1,0 +1,10 @@
+variable "api_repo" {}
+variable "compute_repo" {}
+variable "database_name" {}
+variable "database_password" {}
+variable "database_user" {}
+variable "execution_rate" {}
+variable "cidr" {}
+variable "min_pool" {}
+variable "max_pool" {}
+variable "timeout" {}
