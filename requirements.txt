@@ -1,4 +1,4 @@
-fastapi[full]
+fastapi
 uvicorn
 pandas
 databases
@@ -6,6 +6,7 @@ mysql-connector-python
 httpx
 redis
 aiomysql
+requests
 apscheduler
 pydantic-sqlalchemy
 schedule
