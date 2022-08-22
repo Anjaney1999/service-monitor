@@ -15,4 +15,4 @@ ADD src/service_monitor/compute /code/service_monitor/compute
 ADD src/service_monitor/shared /code/service_monitor/shared
 ADD data /code/data
 
-CMD ["python", "-m", "service_monitor.compute.scheduler", "--run-local"]
+CMD ["python", "-m", "service_monitor.compute.scheduler"]
